@@ -10,9 +10,14 @@ class Index_Model extends Model
         $orderby = ($order == "") ? "" : " ORDER BY `Title` " . $order;
         $from = $start * COUNT_FILMS_ON_PAGE;
         $sth = $this->db->prepare("SELECT `id`,`Title`,`Release Year`,`Format`,`Stars` FROM `film-list` " . $orderby . " LIMIT " . $from . "," . COUNT_FILMS_ON_PAGE . ";");
-        $sth->setFetchMode(PDO::FETCH_ASSOC);
         $sth->execute(); 
-        return $sth->fetchAll();
+        $result = array();
+        while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+            $row["Title"] = Controller::checkString($row["Title"], ENT_QUOTES, 'utf-8');
+            $row["Stars"] = Controller::checkString($row["Stars"], ENT_QUOTES, 'utf-8');
+            $result[] = $row;
+        }
+        return $result;
     }
     public function getFilmsCount()
     {

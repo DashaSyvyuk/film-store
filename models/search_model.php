@@ -13,8 +13,13 @@ class Search_Model extends Model
                                    WHERE " . Controller::checkString($_GET["param"]) . " LIKE CONCAT('%', :search ,'%')
                                    " . $orderby . " LIMIT " . $from . ", " . COUNT_FILMS_ON_PAGE . ";");
         $sth->execute(array(":search" => Controller::checkString($_GET["search-text"])));
-        $sth->setFetchMode(PDO::FETCH_ASSOC);
-        return $sth->fetchAll();
+        $result = array();
+        while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+            $row["Title"] = Controller::checkString($row["Title"], ENT_QUOTES, 'utf-8');
+            $row["Stars"] = Controller::checkString($row["Stars"], ENT_QUOTES, 'utf-8');
+            $result[] = $row;
+        }
+        return $result;
     }
     public function getFilmsCount()
     {
