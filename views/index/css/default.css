@@ -1,0 +1,70 @@
+#addFilm,#addFilmFile
+{
+    width: 90%;
+    margin: 40px auto 0;
+}
+#addFilmButton,#addFilmFileButton
+{
+    background-color: #009966;
+    width: 200px;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+#addFilmButton
+{
+    float: right;
+}
+#addFilmButton:hover,#addFilmFileButton:hover
+{
+    cursor: pointer;
+}
+#addFilm form,#addFilmFile form
+{
+    clear: both;
+    padding: 40px 20px 40px;
+    background-color: #ccffee;
+    display: none;
+}
+#addFilm form .oneInput,#addFilmFile form .oneInput
+{
+    width: 100%;
+    margin-bottom: 10px;
+}
+#addFilm form label
+{
+    width: 150px;
+}
+#addFilm form input[type=text],#addFilm form select
+{
+    width: 412px;
+    height: 30px;
+    outline: none;
+    padding-left: 5px;
+    background-color: #ccc;
+    border: none;
+    color: #fff;
+}
+#addFilm form input[type=submit],#addFilmFile form input[type=submit]
+{
+    background-color: #009966;
+    color: #fff;
+    width: 412px;
+    height: 30px;
+    border: none;
+}
+#addFilm form input[type=submit]
+{
+    float: right;
+}
+#addFilmFile form input[type=submit]
+{
+    margin-top: 30px;
+}
+#error{
+    text-align: right;
+    padding-top: 8px;
+    color: red;
+    display: none;
+}
